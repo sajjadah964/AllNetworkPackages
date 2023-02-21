@@ -30,6 +30,10 @@ app.use(jazzCallRoutes);
 const jazzInternetRoutes = require("./routes/jazzInternetRoutes")
 app.use(jazzInternetRoutes);
 
+// jazz Msg Routes 
+const jazzMsgRoutes = require("./routes/jazzMsgRoutes")
+app.use(jazzMsgRoutes);
+
 // const telenorRoutes = require("./routes/telenorRoutes")
 // app.use(telenorRoutes);
 

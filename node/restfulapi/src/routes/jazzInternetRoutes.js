@@ -6,21 +6,21 @@ const router = new express.Router();
 router.post("/packages/jazz/internet", async (req, res) => {
 
     var jazzI = new jazzInternet({
-        name: req.body.name,
-        email: req.body.email,
-        address: req.body.address,
-        number: req.body.number,
+        pkgName: req.body.pkgName,
+        validity: req.body.validity,
+        price: req.body.price,
+        activationCode:req.body.activationCode,
+        pkgDetails: req.body.pkgDetails,
     });
-    // console.log(jazzCall);
+
     try {
         var saveJazzInternet = await jazzI.save();
-        // console.log(res.send(saveTelenor));
         res.status(201).send(saveJazzInternet);
     } catch (err) {
         res.status(400).send(err);
     }
 })
-// read the data of the registered package
+// Read the data of the registered package
 router.get("/packages/jazz/internet", async (req, res) => {
     try {
         var readJazzInternet = await jazzInternet.find();

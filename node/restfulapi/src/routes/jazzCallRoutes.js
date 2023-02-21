@@ -7,6 +7,7 @@ router.post("/packages/jazz/call", async (req, res) => {
         pkgName: req.body.pkgName,
         validity: req.body.validity,
         price: req.body.price,
+        activationCode: req.body.activationCode,
         pkgDetails: req.body.pkgDetails,
     });
     console.log(jazzC);

@@ -2,16 +2,6 @@ const express = require("express");
 const router = new express.Router();
 const Telenor = require("../models/Telenor");
 router.post("/packages/telenor", async (req, res) => {
-    // console.log(req.body);
-    // res.send("hello sajjad ahmad");
-    // var telenor = new Telenor(req.body);
-    // telenor.save().then(() => {
-    //     console.log(res.send(telenor))
-    //     return res.status(201).send(telenor);
-    // }).catch((e) => {
-    //     return res.status(400).send(e);
-    // })
-
     var telenor = new Telenor({
         name: req.body.name,
         email: req.body.email,
