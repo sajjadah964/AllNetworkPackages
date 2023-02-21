@@ -1,5 +1,5 @@
 const express = require("express");
-const jazzCall = require("../models/jazzCall");
+const jazzCall = require("../models/companyPackage");
 const router = new express.Router();
 router.post("/packages/jazz/call", async (req, res) => {
 

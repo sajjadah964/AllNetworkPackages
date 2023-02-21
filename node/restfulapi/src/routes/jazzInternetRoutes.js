@@ -1,5 +1,5 @@
 const express = require("express");
-const jazzInternet = require("../models/jazzInternet");
+const jazzInternet = require("../models/companyPackage");
 const router = new express.Router();
 
 
