@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Text, TouchableOpacity, View, Image, Linking, Alert } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View, Image, Linking, Alert } from 'react-native';
 
 import Loader from '../../components/Loader';
 import imagePath from '../../constants/imagePath';
 import styles from './styles';
 
-const JazzCall = ({
+const JazzInternet = ({
     // isLoading,
 }) => {
 
@@ -14,7 +14,7 @@ const JazzCall = ({
     // const [inputValue, setinputValue] = useState('3420049141');
     const getUserData = () => {
         setisLoading(true)
-        fetch("http://192.168.100.31:8000/packages/jazz/call").then((result) => {
+        fetch("http://192.168.100.31:8000/packages/jazz/internet").then((result) => {
             result.json().then((resp) => {
                 console.log(resp);
                 setData(resp);
@@ -147,4 +147,5 @@ const JazzCall = ({
     )
 };
 
-export default JazzCall;
+
+export default JazzInternet;

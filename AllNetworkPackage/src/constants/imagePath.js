@@ -24,4 +24,9 @@ export default {
     icAbout:require('../assets/images/about-me.png'),
     icExit:require('../assets/images/exit.png'),
 
+    // Mint SMS and Internet Image 
+    icMB:require('../assets/images/mb.png'),
+    icSMS:require('../assets/images/sms.png'),
+    icMint:require('../assets/images/mint.png'),
+
 }

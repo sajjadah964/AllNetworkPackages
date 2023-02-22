@@ -12,4 +12,5 @@ export default {
     TELENOR_HOME: 'TelenorHome',
     
     JAZZ_CALL: 'JazzCall',
+    JAZZ_INTERNET: 'JazzInternet',
 }

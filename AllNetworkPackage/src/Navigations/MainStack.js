@@ -5,6 +5,7 @@ import {
   InitialScreen,
   JazzCall,
   JazzHome,
+  JazzInternet,
   ModalScreen,
   TelenorHome,
   UfoneHome,
@@ -86,7 +87,20 @@ export default function (Stack) {
 
       <Stack.Screen name={NavigationStrings.JAZZ_CALL} component={JazzCall}
         options={{
-          title: 'Jazz call',
+          title: 'Jazz call + Warid Offers',
+          headerStyle: {
+            backgroundColor: '#8a0204',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
+
+      <Stack.Screen name={NavigationStrings.JAZZ_INTERNET} component={JazzInternet}
+        options={{
+          title: 'Jazz Internet + Warid Offers',
           headerStyle: {
             backgroundColor: '#8a0204',
           },

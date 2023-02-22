@@ -6,3 +6,4 @@ export { default as TelenorHome } from './TelenorHome/TelenorHome';
 export { default as ZongHome } from './ZongHome/ZongHome';
 export { default as UfoneHome } from './UfoneHome/UfoneHome';
 export { default as JazzCall } from './JazzCall/JazzCall';
+export { default as JazzInternet } from './JazzInternet/JazzInternet';

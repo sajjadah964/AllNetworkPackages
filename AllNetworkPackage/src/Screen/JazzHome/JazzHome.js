@@ -38,6 +38,9 @@ const JazzHome = ({ navigation }) => {
                 logoStyle={styles.logoStyle}
                 singleStyle={styles.singleStyle}
                 iconStyle={styles.iconStyle}
+                onPress={() => {
+                    moveToScreen(NavigationStrings.JAZZ_INTERNET);
+                }}
 
             />
             <CustomPkgBtn
