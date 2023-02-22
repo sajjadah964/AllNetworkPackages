@@ -53,11 +53,12 @@ const styles = StyleSheet.create({
     },
     pkgDetailsStyle: {
         backgroundColor: '#8a0204',
-        borderRadius: 10,
+        borderRadius: 6,
         textAlign: 'center',
         color: '#fff',
         marginBottom: 4,
-        marginLeft: 7
+        marginLeft: 7,
+        padding: 3
     },
     pkgName: {
         textAlign: 'center',

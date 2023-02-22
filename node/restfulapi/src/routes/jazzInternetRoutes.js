@@ -9,7 +9,7 @@ router.post("/packages/jazz/internet", async (req, res) => {
         pkgName: req.body.pkgName,
         validity: req.body.validity,
         price: req.body.price,
-        activationCode:req.body.activationCode,
+        activationCode: req.body.activationCode,
         pkgDetails: req.body.pkgDetails,
     });
 

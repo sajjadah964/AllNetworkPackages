@@ -24,7 +24,8 @@ const JazzCall = ({
     }
     useEffect(() => {
         getUserData()
-    }, [])
+    }, []);
+
 
     const triggerCall = (item) => {
         // console.log(item.activationCode)
@@ -68,51 +69,65 @@ const JazzCall = ({
                     </View>
 
                     <View style={{ flex: 1, flexDirection: 'row', marginBottom: 20 }}>
-                        <View style={{
-                            flex: 1,
-                        }}>
-                            <View style={styles.imgCenter}>
-                                <Image
-                                    style={styles.pkgImageStyle}
-                                    source={imagePath.icMint}
-                                />
+                        {/* ONNET MINUT  */}
+                        {item.pkgDetails.onnetMint ?
+                            <View style={{
+                                flex: 1,
+                            }}>
+                                <View style={styles.imgCenter}>
+                                    <Image
+                                        style={styles.pkgImageStyle}
+                                        source={imagePath.icMint}
+                                    />
+                                </View>
+                                <Text style={styles.pkgDetailsStyle}>{item.pkgDetails.onnetMint}</Text>
+                                <Text style={styles.pkgName}>onNetMint</Text>
                             </View>
-                            <Text style={styles.pkgDetailsStyle}>{item.pkgDetails.onnetMint}</Text>
-                            <Text style={styles.pkgName}>onNetMint</Text>
-                        </View>
+                            : null
+                        }
+                        {/* OFFNET MINUT  */}
+                        {item.pkgDetails.offnetMint ?
+                            <View style={{ flex: 1 }}>
+                                <View style={styles.imgCenter}>
+                                    <Image
+                                        style={styles.pkgImageStyle}
+                                        source={imagePath.icMint}
+                                    />
+                                </View>
+                                <Text style={styles.pkgDetailsStyle}>{item.pkgDetails.offnetMint}</Text>
+                                <Text style={styles.pkgName}>offNetMint</Text>
+                            </View>
+                            : null
+                        }
 
-                        <View style={{ flex: 1 }}>
-                            <View style={styles.imgCenter}>
-                                <Image
-                                    style={styles.pkgImageStyle}
-                                    source={imagePath.icMint}
-                                />
+                        {/* SMS MINUT  */}
+                        {item.pkgDetails.sms ?
+                            <View style={{ flex: 1 }}>
+                                <View style={styles.imgCenter}>
+                                    <Image
+                                        style={styles.pkgImageStyle}
+                                        source={imagePath.icSMS}
+                                    />
+                                </View>
+                                <Text style={styles.pkgDetailsStyle}>{item.pkgDetails.sms}</Text>
+                                <Text style={styles.pkgName}>SMS</Text>
                             </View>
-                            <Text style={styles.pkgDetailsStyle}>{item.pkgDetails.offnetMint}</Text>
-                            <Text style={styles.pkgName}>offNetMint</Text>
-                        </View>
-
-                        <View style={{ flex: 1 }}>
-                            <View style={styles.imgCenter}>
-                                <Image
-                                    style={styles.pkgImageStyle}
-                                    source={imagePath.icSMS}
-                                />
+                            : null
+                        }
+                        {/* INTERNET  */}
+                        {item.pkgDetails.internet ?
+                            <View style={{ flex: 1 }}>
+                                <View style={styles.imgCenter}>
+                                    <Image
+                                        style={styles.pkgImageStyle}
+                                        source={imagePath.icMB}
+                                    />
+                                </View>
+                                <Text style={styles.pkgDetailsStyle}>{item.pkgDetails.internet}</Text>
+                                <Text style={styles.pkgName}>MBs</Text>
                             </View>
-                            <Text style={styles.pkgDetailsStyle}>{item.pkgDetails.sms}</Text>
-                            <Text style={styles.pkgName}>SMS</Text>
-                        </View>
-
-                        <View style={{ flex: 1 }}>
-                            <View style={styles.imgCenter}>
-                                <Image
-                                    style={styles.pkgImageStyle}
-                                    source={imagePath.icMB}
-                                />
-                            </View>
-                            <Text style={styles.pkgDetailsStyle}>{item.pkgDetails.internet}</Text>
-                            <Text style={styles.pkgName}>MBs</Text>
-                        </View>
+                            : null
+                        }
 
                     </View>
 
