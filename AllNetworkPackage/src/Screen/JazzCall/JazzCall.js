@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Text, TouchableOpacity, View, Image, Linking, Alert } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View, Image, Linking, Alert, RefreshControl, ActivityIndicator, ToastAndroid } from 'react-native';
 
 import Loader from '../../components/Loader';
 import imagePath from '../../constants/imagePath';
@@ -11,39 +11,59 @@ const JazzCall = ({
 
     const [data, setData] = useState([]);
     const [isLoading, setisLoading] = useState(true);
+    const [Refreshing, setRefreshing] = useState(true);
     // const [inputValue, setinputValue] = useState('3420049141');
-    const getUserData = () => {
-        setisLoading(true)
-        fetch("http://192.168.100.31:8000/packages/jazz/call").then((result) => {
-            result.json().then((resp) => {
-                console.log(resp);
-                setData(resp);
-                setisLoading(false)
-            })
-        })
-    }
+    // const getUserData = () => {
+    //     setisLoading(true)
+    //     fetch("http://192.168.100.31:8000/packages/jazz/call").then((result) => {
+    //         result.json().then((resp) => {
+    //             console.log(resp);
+    //             setData(resp);
+    //             setisLoading(false)
+    //         })
+    //     })
+    // }
     useEffect(() => {
-        getUserData()
+        getUserData();
     }, []);
 
-
+    const getUserData = async () => {
+        setRefreshing(true);
+        if (data.length <= 1) {
+            try {
+                let response = await fetch(
+                    'http://192.168.100.31:8000/packages/jazz/call',
+                );
+                let responseJson = await response.json();
+                console.log(responseJson);
+                setRefreshing(false);
+                var newdata = responseJson;
+                setData(newdata);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        else {
+            ToastAndroid.show('No more new data available', ToastAndroid.SHORT);
+            setRefreshing(false)
+        }
+    };
     const triggerCall = (item) => {
         // console.log(item.activationCode)
-        const pkgNumber = (item.activationCode)
-        // console.log("this is the data",phoneNumber);
+        const pkgNumber = (item.activationCode);
         Alert.alert('Confirmation...!', 'Would you like to Subscribe this offer.', [
             {
                 text: 'No',
                 onPress: () => console.log('Cancel Pressed'),
                 style: 'cancel',
             },
-            { text: 'Yes', onPress: () => Linking.openURL(`tel:${pkgNumber}1234`) },
+            { text: 'Yes', onPress: () => Linking.openURL(`tel:${pkgNumber}`) },
         ]);
 
     }
 
     const renderItem = ({ item }) => {
-        console.log(item)
+        // console.log(item);
         return (
             <View style={{ flex: 1, backgroundColor: '#8a0204', paddingHorizontal: 10, paddingVertical: 5 }}>
                 <View style={{ padding: 8, borderRadius: 12, backgroundColor: '#fff' }}>
@@ -85,6 +105,7 @@ const JazzCall = ({
                             </View>
                             : null
                         }
+
                         {/* OFFNET MINUT  */}
                         {item.pkgDetails.offnetMint ?
                             <View style={{ flex: 1 }}>
@@ -150,12 +171,20 @@ const JazzCall = ({
 
     return (
         <View style={styles.container}>
-            <Loader isLoading={isLoading} />
+            {/* <Loader isLoading={isLoading} /> */}
+            {/* {Refreshing ? <ActivityIndicator /> : null} */}
             <FlatList
                 data={data}
                 renderItem={renderItem}
-                // keyExtractor={item => item.id}
                 keyExtractor={(item, index) => index.toString()}
+                enableEmptySections={true}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={Refreshing}
+                        onRefresh={getUserData}
+                        colors={['#bbabca']}
+                    />
+                }
             />
 
         </View>
