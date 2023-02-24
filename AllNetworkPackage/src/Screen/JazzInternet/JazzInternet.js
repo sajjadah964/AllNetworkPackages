@@ -14,7 +14,7 @@ const JazzInternet = ({
     // const [inputValue, setinputValue] = useState('3420049141');
     const getUserData = () => {
         setisLoading(true)
-        fetch("http://192.168.100.31:8000/packages/jazz/internet").then((result) => {
+        fetch("http://192.168.43.40:8000/packages/jazz/internet").then((result) => {
             result.json().then((resp) => {
                 console.log(resp);
                 setData(resp);

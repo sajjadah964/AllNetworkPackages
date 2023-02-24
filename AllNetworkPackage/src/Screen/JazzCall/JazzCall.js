@@ -3,6 +3,7 @@ import { FlatList, Text, TouchableOpacity, View, Image, Linking, Alert, RefreshC
 
 import Loader from '../../components/Loader';
 import imagePath from '../../constants/imagePath';
+import NavigationStrings from '../../constants/NavigationStrings';
 import styles from './styles';
 
 const JazzCall = ({
@@ -29,16 +30,16 @@ const JazzCall = ({
 
     const getUserData = async () => {
         setRefreshing(true);
-        if (data.length <= 1) {
+        if (data.length < 10) {
             try {
                 let response = await fetch(
-                    'http://192.168.100.31:8000/packages/jazz/call',
+                    'http://192.168.43.40:8000/packages/jazz/call',
                 );
                 let responseJson = await response.json();
                 console.log(responseJson);
                 setRefreshing(false);
-                var newdata = responseJson;
-                setData(newdata);
+                // var newdata = responseJson;
+                setData({ data: responseJson });
             } catch (error) {
                 console.error(error);
             }
@@ -65,7 +66,14 @@ const JazzCall = ({
     const renderItem = ({ item }) => {
         // console.log(item);
         return (
-            <View style={{ flex: 1, backgroundColor: '#8a0204', paddingHorizontal: 10, paddingVertical: 5 }}>
+            <TouchableOpacity style={{
+                flex: 1,
+                backgroundColor: '#8a0204',
+                paddingHorizontal: 10,
+                paddingVertical: 5
+            }}
+            onPress={()=>{NavigationStrings.PACKAGE_DETAILS}}
+            >
                 <View style={{ padding: 8, borderRadius: 12, backgroundColor: '#fff' }}>
 
                     <View style={[styles.gridStyle, { marginBottom: 6 }]}>
@@ -165,7 +173,7 @@ const JazzCall = ({
                     </View>
 
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 
