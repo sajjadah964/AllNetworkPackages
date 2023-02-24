@@ -72,7 +72,7 @@ const JazzCall = ({
                 paddingHorizontal: 10,
                 paddingVertical: 5
             }}
-            onPress={()=>{NavigationStrings.PACKAGE_DETAILS}}
+            // onPress={()=>{NavigationStrings.PACKAGE_DETAILS}}
             >
                 <View style={{ padding: 8, borderRadius: 12, backgroundColor: '#fff' }}>
 
