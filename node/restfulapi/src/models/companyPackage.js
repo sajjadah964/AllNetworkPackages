@@ -5,7 +5,7 @@ const companyPackageSchema = new mongoose.Schema({
     pkgName: { type: String, require: true },
     validity: { type: String, require: true },
     price: { type: Number, require: true },
-    activationCode: { type: String, require: true },
+    activationCode: { type: Number, require: true },
     pkgDetails: {
         offnetMint: { type: String },
         onnetMint: { type: String },
